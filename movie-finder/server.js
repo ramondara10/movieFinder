@@ -1,89 +1,106 @@
-// const express = require('express');
-// const mongoose = require('mongoose')
+const express = require("express");
+const mongoose = require("mongoose");
+const path = require('path');
+const routes = require("./routes");
+const app = express();
+const PORT = process.env.PORT || 3000;
 
+const users = require('./routes/usersRoute.js');
 
-// const app = express();
-// const PORT = process.env.PORT || 4000;
+// middleware
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 
-// // const pusher = new Pusher({
-// //     appId: "1229891",
-// //     key: "e2a3ce06f8cf60d20597",
-// //     secret: "fb49f86c535f57a44d59",
-// //     cluster: "us2",
-// //     useTLS: true
-// // });
+app.use(express.static(path.join(__dirname, 'client/build')));
 
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    if (req.method === 'OPTIONS') {
+        res.header("Access-Control-Allow-Methods", "PUT, POST, DELETE, GET");
+        return res.status(200).json({});
+    }
+    next();
+});
 
-// // middleware
-// app.use(express.json());
+app.use(routes);
 
-// app.use((req,res,next)=>{
-//     res.setHeader('Acces-Control-Allow-Origin', '*');
-//     next();
-// })
+//DB config
+const connection_url =
+  "mongodb+srv://tony07:Tonydarashadow1994@@cluster0.d3cij.mongodb.net/gamedb?retryWrites=true&w=majority";
 
-// app.use("/api", apiRoutes);
+mongoose.connect(connection_url, {
+  useCreateIndex: true,
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
+mongoose.connection.on('connected', () => {
+    console.log('Connected to MongoDB');
+});
+mongoose.connection.on('error', (error) => {
+    console.log(error);
+});
 
-// //DB config
-// const connection_url = "mongodb+srv://tony07:Tonydarashadow1994@@cluster0.d3cij.mongodb.net/gamedb?retryWrites=true&w=majority";
+// coonection to mongo db
 
-// mongoose.connect(connection_url, {
-//     useCreateIndex: true,
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true
+// this chould add a game in your list maybe?
+// const db = mongoose.connection;
 
+// db.once("open", () => {
+//   console.log("DB is actually workig");
+//   const movieCollection = db.collection("gamedetails");
+//   const changeStream = movieCollection.watch();
+
+//   changeStream.on("change", (change) => {
+//     console.log(change);
+
+//     if (change.operationType === "insert") {
+//       const addedGame = change.fullDocument;
+//       pusher.trigger("added", "inserted", {
+//         name: addedGame.user,
+//       });
+//     } else {
+//       console.log("Error double check pusher");
+//     }
+//   });
 // });
 
-// // this chould add a game in your list maybe?
-// const db = mongoose.connection
+//add route
+app.get("/", (req, res) => res.status(200).send("it works?!"));
 
-// db.once('open', () => {
-//     console.log("DB is actually workig");
-//     const movieCollection = db.collection('gamedetails');
-//     const changeStream = movieCollection.watch();
-
-//     changeStream.on('change', (change) => {
-//         console.log(change)
-
-//         if (change.operationType === 'insert') {
-//             const addedGame = change.fullDocument;
-//             pusher.trigger('added', 'inserted',
-//                 {
-//                     name: addedGame.user
-//                 });
-//         } else {
-//             console.log("Error double check pusher");
-//         }
-//     });
+// app.get("/movies/sync", (req, res) => {
+//   Movies.find((err, data) => {
+//     if (err) {
+//       res.status(500).send(err);
+//     } else {
+//       res.status(201).send(data);
+//     }
+//   });
 // });
 
-// //add route
-// app.get("/", (req, res) => res.status(200).send('it works?!'));
+// app.get("/api/v1/movies", (req, res) => {
+//   const gamesDB = req.body;
 
-// app.get("/games/sync", (req, res) => {
-//     Movies.find((err, data) => {
-//         if (err) {
-//             res.status(500).send(err)
-//         } else {
-//             res.status(201).send(data)
-//         }
-//     });
+//   Movies.create(gamesDB, (err, data) => {
+//     if (err) {
+//       res.status(500).send(err);
+//     } else {
+//       res.status(201).send(data);
+//     }
+//   });
 // });
 
-// app.get('/api/v1/games', (req, res) => {
-//     const gamesDB = req.body
+app.use('/api/users', users)
 
-//     Movies.create(gamesDB, (err, data) => {
-//         if (err) {
-//             res.status(500).send(err)
-//         } else {
-//             res.status(201).send(data)
-//         }
-//     });
-// });
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '/client/build/index.html'));
+});
 
-// //start
-// app.listen(PORT, function () {
-//     console.log(`API Server now listening on PORT ${PORT}!`);
-// })
+//start
+app.listen(PORT, function () {
+  console.log(`API Server now listening on PORT ${PORT}!`);
+});
