@@ -2,7 +2,7 @@ import React from 'react';
 import  './SignIn.css';
 
 
-function SignIn() {
+function signIn() {
     const register=(e)=>{
         e.preventdefault();
     };
@@ -23,4 +23,4 @@ function SignIn() {
     )
 }
 
-export default SignIn
+export default signIn

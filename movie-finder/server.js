@@ -45,60 +45,15 @@ mongoose.connection.on('error', (error) => {
     console.log(error);
 });
 
-// coonection to mongo db
-
-// this chould add a game in your list maybe?
-// const db = mongoose.connection;
-
-// db.once("open", () => {
-//   console.log("DB is actually workig");
-//   const movieCollection = db.collection("gamedetails");
-//   const changeStream = movieCollection.watch();
-
-//   changeStream.on("change", (change) => {
-//     console.log(change);
-
-//     if (change.operationType === "insert") {
-//       const addedGame = change.fullDocument;
-//       pusher.trigger("added", "inserted", {
-//         name: addedGame.user,
-//       });
-//     } else {
-//       console.log("Error double check pusher");
-//     }
-//   });
-// });
-
 //add route
 app.get("/", (req, res) => res.status(200).send("it works?!"));
 
-// app.get("/movies/sync", (req, res) => {
-//   Movies.find((err, data) => {
-//     if (err) {
-//       res.status(500).send(err);
-//     } else {
-//       res.status(201).send(data);
-//     }
-//   });
-// });
-
-// app.get("/api/v1/movies", (req, res) => {
-//   const gamesDB = req.body;
-
-//   Movies.create(gamesDB, (err, data) => {
-//     if (err) {
-//       res.status(500).send(err);
-//     } else {
-//       res.status(201).send(data);
-//     }
-//   });
-// });
 
 app.use('/api/users', users)
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '/client/build/index.html'));
-});
+// app.get('*', (req, res) => {
+//     res.sendFile(path.join(__dirname, '/client/build/index.html'));
+// });
 
 //start
 app.listen(PORT, function () {

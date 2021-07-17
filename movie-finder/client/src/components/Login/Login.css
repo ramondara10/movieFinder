@@ -57,7 +57,7 @@
     padding: 15px 20px;
     font-size: 1rem;
     color: white;
-    background-color: blue;
+    background-color:rgba(44, 84, 148, 0.712);
     font-weight: 650;
     border: none;
     cursor: pointer;
@@ -83,7 +83,7 @@
 .login-here{
     font-size: 1rem;
     padding: 15px 20px;
-    background-color: blue;
+    background-color:rgba(44, 84, 148, 0.712);
     border: none;
     font-weight: 600;
     cursor: pointer;
