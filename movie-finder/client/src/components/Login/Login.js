@@ -8,7 +8,7 @@ function Login() {
   return (
     <div className="login">
       <div className="login-background">
-        <img className="login-logo" src="" alt="" />
+        <img className="login-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1ni9r3LhDapbQosovY-Sdq_sig66BJretyQ&usqp=CAU" alt=" logo-placeholder" />
       </div>
       <button onClick={() => SetSignIn(true)} className="login-button">
         Sign in
@@ -21,10 +21,10 @@ function Login() {
           <>
             <h1>Take a look, I know you want to!</h1>
             <h2>Unlimited Movies and Shows</h2>
-            <h3>Login</h3>
+            <h3>Sign In</h3>
             <div className="login-input">
               <form>
-                <input type="email" placeholder="email-address" />
+                <input type="email" placeholder="email-address" className="email" />
                 <button onClick={() => SetSignIn(true)} className="login-here">
                   LOGIN HERE
                 </button>

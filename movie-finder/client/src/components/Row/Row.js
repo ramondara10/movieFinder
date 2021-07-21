@@ -3,6 +3,7 @@ import axios from "../../utils/API";
 import YouTube from "react-youtube";
 import movieTrailer from "movie-trailer";
 import "./Row.css";
+// import TextTruncate from "react-text-truncate";
 
 const base_url = "https://image.tmdb.org/t/p/original";
 
@@ -42,6 +43,7 @@ function Row({ title, fetchUrl, isLarge }) {
   };
 
 
+  // const  VideoCard= forwardRef(({ movie }, ref) => {
   return (
 
       <div className="row">
@@ -49,6 +51,7 @@ function Row({ title, fetchUrl, isLarge }) {
         <div className="posters">
           {movies.map((movie) => {
             return (
+              // <div ref={ref} className="videoCard">
               <img
                 key={movie.id}
                 onClick={() => handleClick(movie)}
@@ -58,16 +61,30 @@ function Row({ title, fetchUrl, isLarge }) {
                 }`}
                 alt={movie.name}
               />
+                /* <TextTruncate
+                line={1}
+                element="p"
+                truncateText="..."
+                text={movie.overview}
+                /> */
+              //  </div>
             );
-          })}
+          })};
         </div>
         <div style={{ padding: "40px" }}>
+        {/* <h2>{movie.title || movie.original_name}</h2> */}
+            {/* <p className="videoCard-stats">
+                {movie.media_type && `${movie.media_type} . `}
+                {movie.release_date || movie.first_air_date} .
+            </p> */}
+
           {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
         </div>
 
       </div>
 
   );
+  
 }
 
 export default Row;
