@@ -1,0 +1,117 @@
+.login{
+    position: relative;
+    height: 100%;
+    background-color:rgba(151, 151, 151, 0.712);
+    background-size: cover ;
+    object-fit: contain;
+
+}
+
+
+.login-logo{
+    position: fixed;
+    left: 0;
+    width: 100px;
+    object-fit: contain;
+    margin-left: 10px;
+    margin-top: 10px;
+    /* padding-left: 20px; */
+    border-radius: 100px;
+}
+
+.login-gradient{
+    width: 100%;
+    z-index: 1;
+    height: 100vh;
+    background-color:rgba(55, 54, 61, 0.822);
+
+    background-image: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.8)0,
+        rgba(0, 0, 0, 0)60%,
+        rgba(0, 0, 0, 0.8)100,
+
+    );
+    
+}
+
+.login-body{
+    position: absolute;
+    top: 35%;
+    z-index: 1 ;
+    color: white;
+    padding: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    left: 0;
+    right: 0;
+
+}
+
+.login-body>h1{
+    font-size: 3rem;
+    margin-bottom: 25px;
+}
+.login-h2{
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 35px;
+}
+
+
+.login-login{
+    object-fit: contain;
+    padding-left: 15px;
+
+}
+
+.login-button{
+    position: fixed;
+    right: 15px;
+    top: 15px;
+    padding: 15px 20px;
+    font-size: 1rem;
+    color: white;
+    background-color:rgba(44, 84, 148, 0.712);
+    font-weight: 650;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+
+
+}
+
+.login-input{
+    margin: 20px;
+   
+
+}
+
+.login-input>form>input{
+    padding: 13px;
+    outline-width: 0;
+    height: 30px;
+    width: 30%;
+    border: none;
+    max-width: 600px;
+
+}
+
+.login-here{
+    font-size: 1rem;
+    padding: 15px 20px;
+    background-color:rgba(44, 84, 148, 0.712);
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 15px;
+    color: white;
+    margin-left: 5px;
+
+}
+
+.email{
+    border-radius: 5px;
+}
+

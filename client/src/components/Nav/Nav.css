@@ -1,0 +1,50 @@
+.nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px;
+    height: 45px;
+    z-index: 1;
+  
+    /* Animation */
+    transition-timing-function: ease-in;
+    transition: all 0.5s;
+  
+  }
+  
+  .nav-blue {
+    background-color:rgba(0, 0, 0, 0.918);    
+  }
+  
+  .nav-logo {
+    position: fixed;
+    top: 10px;
+    left: 20px;
+    width: 70px;
+    padding: 10px;
+    object-fit: contain;
+    border-radius: 50px;
+  }
+  
+  .nav-user {
+    position: fixed;
+    right: 20px;
+    width: 50px;
+    object-fit: contain;
+    border-radius: 50px;
+  }
+
+  .search{
+    position: relative;
+    top: 20%;
+    left: 50%;
+    width: 150px;
+    height: 25px;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    color: white;
+    background-color:rgba(44, 84, 148, 0.712);
+    font-weight: 650;
+    
+  }
