@@ -13,11 +13,11 @@ import Login from"./components/Login/Login"
 import Home from "./components/Home/Home"
 
 function App() {
-  const user = true;
+  // const user = false;
   return (
     <div className="app">
       <Router>
-        {!user ? (
+        {/* {!user ? (
           <Login/>
         ):(
            <Switch>
@@ -25,7 +25,16 @@ function App() {
             <Home />
           </Route>
         </Switch>
-        )}
+        )} */}
+
+        <Switch>
+          <Route exact path="/">
+            <Login />
+          </Route>
+          <Route exact path="/home">
+            <Home />
+          </Route>
+        </Switch>
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
        

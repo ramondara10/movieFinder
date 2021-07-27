@@ -1,12 +1,13 @@
 import React from "react";
 import "./SignIn.css";
 
-function SignIn() {
+function SignIn({signinHandler}) {
   const register = (e) => {
-    e.preventdefault();
+    e.preventDefault();
   };
   const signIn = (e) => {
-    e.preventdefault();
+    e.preventDefault();
+    signinHandler();
   };
   return (
     <div className="signup">

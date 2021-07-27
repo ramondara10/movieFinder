@@ -43,7 +43,8 @@
     border-radius: 15px;
     border: none;
     outline: none;
-    background-color:rgba(151, 151, 151, 0.712);
-    font-weight: 800;
+    color: white;
+    background-color:rgba(44, 84, 148, 0.712);
+    font-weight: 650;
     
   }
